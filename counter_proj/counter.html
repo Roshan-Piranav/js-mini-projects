@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>COUNTER</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="text-center space-y-6">
+      <h2 class="text-3xl font-bold text-gray-700">COUNTER</h2>
+      <p id="cnt" class="text-5xl font-bold text-blue-600">0</p>
+      <div class="space-x-4">
+        <button
+          id="inc"
+          class="px-5 py-2 bg-green-500 hover:bg-green-600 text-white rounded transition"
+        >
+          Increase
+        </button>
+        <button
+          id="res"
+          class="px-5 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded transition"
+        >
+          Reset
+        </button>
+        <button
+          id="dec"
+          class="px-5 py-2 bg-red-500 hover:bg-red-600 text-white rounded transition"
+        >
+          Decrease
+        </button>
+      </div>
+    </div>
+
+    <script>
+      const cnt = document.getElementById("cnt");
+      const inc = document.getElementById("inc");
+      const res = document.getElementById("res");
+      const dec = document.getElementById("dec");
+
+      function updateColor(value) {
+        if (value > 0) {
+          cnt.className = "text-5xl font-bold text-green-600";
+        } else if (value < 0) {
+          cnt.className = "text-5xl font-bold text-red-600";
+        } else {
+          cnt.className = "text-5xl font-bold text-blue-600";
+        }
+      }
+
+      inc.addEventListener("click", () => {
+        let value = parseInt(cnt.textContent) + 1;
+        cnt.textContent = value;
+        updateColor(value);
+      });
+
+      dec.addEventListener("click", () => {
+        let value = parseInt(cnt.textContent) - 1;
+        cnt.textContent = value;
+        updateColor(value);
+      });
+
+      res.addEventListener("click", () => {
+        let value = 0;
+        cnt.textContent = value;
+        updateColor(value);
+      });
+    </script>
+  </body>
+</html>
